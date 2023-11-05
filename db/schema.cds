@@ -11,7 +11,26 @@ entity Peaks {
         peak_alternative_name      : String;
         height_metres              : Integer;
         climbing_status            : String;
-        first_ascent_year          : Date;
+        first_ascent_year          : Int32;
         first_ascent_country       : String;
-        first_ascent_expedition_id : String;
+        first_ascent_expedition_id : Association to Expeditions;
+}
+
+entity Expeditions {
+    key expedition_id: String;
+    peak_id: Association to many Peaks on peak_id.first_ascent_expedition_id = $self;
+    peak_name: String;
+    year: Integer;
+    season: String;
+    basecamp_date: Date;
+    highpoint_date: Date;
+    termination_date: Date;
+    termination_reason: String;
+    highpoint_metres: Int32;
+    members: String;
+    member_deaths: String;
+    hired_staff: String;
+    hired_staff_deaths: String;
+    oxygen_used: String;
+    trekking_agency: String;
 }
