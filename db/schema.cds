@@ -13,12 +13,12 @@ entity Peaks {
         climbing_status            : String;
         first_ascent_year          : Int32;
         first_ascent_country       : String;
-        first_ascent_expedition_id : Association to Expeditions;
+        first_ascent_expedition_id : String;
 }
 
 entity Expeditions {
     key expedition_id: String;
-    peak_id: Association to many Peaks on peak_id.first_ascent_expedition_id = $self;
+    peak_id: String;
     peak_name: String;
     year: Integer;
     season: String;
