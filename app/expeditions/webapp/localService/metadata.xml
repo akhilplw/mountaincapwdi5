@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="AdminService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Peaks" EntityType="AdminService.Peaks"/>
+                <EntitySet Name="Expeditions" EntityType="AdminService.Expeditions"/>
+            </EntityContainer>
+            <EntityType Name="Peaks">
+                <Key>
+                    <PropertyRef Name="peak_id"/>
+                </Key>
+                <Property Name="peak_id" Type="Edm.String" Nullable="false"/>
+                <Property Name="peak_name" Type="Edm.String"/>
+                <Property Name="peak_alternative_name" Type="Edm.String"/>
+                <Property Name="height_metres" Type="Edm.Int32"/>
+                <Property Name="climbing_status" Type="Edm.String"/>
+                <Property Name="first_ascent_year" Type="Edm.Int32"/>
+                <Property Name="first_ascent_country" Type="Edm.String"/>
+                <Property Name="first_ascent_expedition_id" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Expeditions">
+                <Key>
+                    <PropertyRef Name="expedition_id"/>
+                </Key>
+                <Property Name="expedition_id" Type="Edm.String" Nullable="false"/>
+                <Property Name="peak_id" Type="Edm.String"/>
+                <Property Name="peak_name" Type="Edm.String"/>
+                <Property Name="year" Type="Edm.Int32"/>
+                <Property Name="season" Type="Edm.String"/>
+                <Property Name="basecamp_date" Type="Edm.Date"/>
+                <Property Name="highpoint_date" Type="Edm.Date"/>
+                <Property Name="termination_date" Type="Edm.Date"/>
+                <Property Name="termination_reason" Type="Edm.String"/>
+                <Property Name="highpoint_metres" Type="Edm.Int32"/>
+                <Property Name="members" Type="Edm.String"/>
+                <Property Name="member_deaths" Type="Edm.String"/>
+                <Property Name="hired_staff" Type="Edm.String"/>
+                <Property Name="hired_staff_deaths" Type="Edm.String"/>
+                <Property Name="oxygen_used" Type="Edm.String"/>
+                <Property Name="trekking_agency" Type="Edm.String"/>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
