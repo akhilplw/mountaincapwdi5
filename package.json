@@ -15,9 +15,11 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch-expeditions": "cds watch --open expeditions/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-expeditions": "cds watch --open expeditions/webapp/index.html?sap-ui-xx-viewCache=false",
+    "watch-peaks": "cds watch --open peaks/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "sapux": [
-    "app/expeditions"
+    "app/expeditions",
+    "app/peaks"
   ]
 }

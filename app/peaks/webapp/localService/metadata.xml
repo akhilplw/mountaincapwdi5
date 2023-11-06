@@ -23,7 +23,7 @@
                 <Property Name="climbing_status" Type="Edm.String"/>
                 <Property Name="first_ascent_year" Type="Edm.Int32"/>
                 <Property Name="first_ascent_country" Type="Edm.String"/>
-                <Property Name="first_ascent_expedition_id" Type="Edm.String"/>
+                <Property Name="first_ascent" Type="Edm.String"/>
             </EntityType>
             <EntityType Name="Expeditions">
                 <Key>
