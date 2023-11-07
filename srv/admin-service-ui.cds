@@ -7,6 +7,11 @@ annotate AdminService.Expeditions with {
     peak_name             @title: 'Peak Name';
     season @title:'Season';
     year     @title: 'Year';
+    highpoint_date @title : 'Highpoint Date';
+    highpoint_metres @title: 'Highpoint(m)';
+    members @title : 'No. of Members';
+    trekking_agency @title: 'Name of Trekking Agency'
+
     // peak_alternative_name @title: 'Peak Alternative Name';
     // height_metres         @title: 'Height(m)';
     // climbing_status       @title: 'Climbing Status';
@@ -18,7 +23,7 @@ annotate AdminService.Expeditions with @(UI: {
     LineItem        : [
         {
             Value                 : ID,
-            ![@HTML5.CssDefaults] : {width: '5rem'}
+            ![@HTML5.CssDefaults] : {width: '10rem'}
         },
         {
             Value                 : peak_name,
@@ -31,7 +36,29 @@ annotate AdminService.Expeditions with @(UI: {
         {
             Value                 : year,
             ![@HTML5.CssDefaults] : {width: '5rem'}
+        },
+        {
+            Value                 : basecamp_date,
+            ![@HTML5.CssDefaults] : {width: '10rem'}
+        },
+        {
+            Value                 : highpoint_date,
+            ![@HTML5.CssDefaults] : {width: '10rem'}
+        },
+        {
+            Value                :  highpoint_metres,
+            ![@HTML5.CssDefaults] : {width: '10rem'}
+        },
+        {
+            Value                 : members,
+            ![@HTML5.CssDefaults] : {width: '10rem'}
+        },
+        {
+            Value                 : trekking_agency,
+            // ![@HTML5.CssDefaults] : {width: '10rem'}
         }
+
+
     ],
     SelectionFields : [peak_name],
     HeaderInfo      : {
