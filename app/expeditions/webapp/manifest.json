@@ -1,7 +1,7 @@
 {
   "_version": "1.58.0",
   "sap.app": {
-    "id": "test.peaks",
+    "id": "mountaineering.expeditions",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
       "version": "1.11.3",
-      "toolsId": "f889dcd3-7051-4362-9ab0-3682d1eb5c86"
+      "toolsId": "37332d33-fd86-4a78-b51c-d5b2d3e4acb5"
     },
     "dataSources": {
       "mainService": {
@@ -62,7 +62,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "test.peaks.i18n.i18n"
+          "bundleName": "mountaineering.expeditions.i18n.i18n"
         }
       },
       "": {
@@ -88,42 +88,42 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "PeaksList",
-          "target": "PeaksList"
+          "name": "ExpeditionsList",
+          "target": "ExpeditionsList"
         },
         {
-          "pattern": "Peaks({key}):?query:",
-          "name": "PeaksObjectPage",
-          "target": "PeaksObjectPage"
+          "pattern": "Expeditions({key}):?query:",
+          "name": "ExpeditionsObjectPage",
+          "target": "ExpeditionsObjectPage"
         }
       ],
       "targets": {
-        "PeaksList": {
+        "ExpeditionsList": {
           "type": "Component",
-          "id": "PeaksList",
+          "id": "ExpeditionsList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Peaks",
+              "contextPath": "/Expeditions",
               "variantManagement": "Page",
               "navigation": {
-                "Peaks": {
+                "Expeditions": {
                   "detail": {
-                    "route": "PeaksObjectPage"
+                    "route": "ExpeditionsObjectPage"
                   }
                 }
               }
             }
           }
         },
-        "PeaksObjectPage": {
+        "ExpeditionsObjectPage": {
           "type": "Component",
-          "id": "PeaksObjectPage",
+          "id": "ExpeditionsObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Peaks"
+              "contextPath": "/Expeditions"
             }
           }
         }

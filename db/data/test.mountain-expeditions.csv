@@ -1,2 +1,13 @@
 id,peak_id,peak_name,year,season,basecamp_date,highpoint_date,termination_date,termination_reason,highpoint_metres,members,member_deaths,hired_staff,hired_staff_deaths,oxygen_used,trekking_agency
 ANN260101,ANN2,Annapurna II,1960,Spring,1960-03-15,1960-05-17,NA,Success (main peak),7937,10,0,9,0,TRUE,NA
+VER15168,EVER,Everest,2015,Spring,2015-04-13,2015-04-25,2015-04-27,Other,6500,17,1,20,0,FALSE,Himalayan Guides
+EVER15112,EVER,Everest,2015,Spring,2015-04-13,2015-04-17,2015-05-01,Other,6400,9,0,9,0,FALSE,Seven Summit Treks
+AMAD14364,AMAD,Ama Dablam,2014,Autumn,2014-11-07,2014-11-18,NA,Success (main peak),6814,1,0,1,0,FALSE,Dreamers Destination Treks (Him Guides permit)
+AMAD14365,AMAD,Ama Dablam,2014,Autumn,NA,NA,NA,"Bad conditions (deep snow, avalanching, falling ice, or rock)",NA,3,0,0,0,FALSE,Himalayan Guides permit
+NREK04301,NREK,Nirekha,2004,Autumn,NA,2004-10-17,NA,Success (main peak),6159,3,0,0,0,FALSE,Wilderness Experience
+NREK09301,NREK,Nirekha,2009,Autumn,NA,2009-10-25,NA,Success (main peak),6159,3,0,2,0,FALSE,Cosmo Treks
+SHNW80301,SHNW,Shershon Northwest,1980,Autumn,1980-09-16,1980-10-15,1980-10-31,Success (main peak),6682,3,0,0,0,FALSE,NA
+SHNW80401,SHNW,Shershon Northwest,1980,Winter,1980-12-10,1980-12-30,1981-01-23,Success (main peak),6682,4,0,1,0,FALSE,NA
+SHNW84101,SHNW,Shershon Northwest,1984,Spring,1984-04-19,1984-05-25,1984-05-31,Success (main peak),6682,3,0,0,0,FALSE,NA
+MANA15312,MANA,Manaslu,2015,Autumn,NA,2015-10-01,NA,Success (main peak),8163,10,0,0,0,FALSE,Mount Treks
+MANA15310,MANA,Manaslu,2015,Autumn,NA,2015-10-01,NA,Success (main peak),8163,3,0,4,0,FALSE,Ascent Himalayas

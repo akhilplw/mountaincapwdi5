@@ -1,2 +1,2 @@
 
-using from './peaks/annotations';
+using from './expeditions/annotations';

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/HTML5.xml">
+        <edmx:Include Alias="HTML5" Namespace="com.sap.vocabularies.HTML5.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="AdminService" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="Peaks" EntityType="AdminService.Peaks">
+                    <NavigationPropertyBinding Path="first_ascent" Target="Expeditions"/>
+                </EntitySet>
+                <EntitySet Name="Expeditions" EntityType="AdminService.Expeditions">
+                    <NavigationPropertyBinding Path="peaks" Target="Peaks"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="Peaks">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="peak_id" Type="Edm.String"/>
+                <Property Name="peak_name" Type="Edm.String"/>
+                <Property Name="peak_alternative_name" Type="Edm.String"/>
+                <Property Name="height_metres" Type="Edm.Int32"/>
+                <Property Name="climbing_status" Type="Edm.String"/>
+                <Property Name="first_ascent_year" Type="Edm.Int32"/>
+                <Property Name="first_ascent_country" Type="Edm.String"/>
+                <NavigationProperty Name="first_ascent" Type="AdminService.Expeditions" Partner="peaks">
+                    <ReferentialConstraint Property="first_ascent_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="first_ascent_ID" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="Expeditions">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false"/>
+                <Property Name="peak_id" Type="Edm.String"/>
+                <NavigationProperty Name="peaks" Type="AdminService.Peaks" Partner="first_ascent">
+                    <ReferentialConstraint Property="first_ascent_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="peak_name" Type="Edm.String"/>
+                <Property Name="year" Type="Edm.Int32"/>
+                <Property Name="season" Type="Edm.String"/>
+                <Property Name="basecamp_date" Type="Edm.Date"/>
+                <Property Name="highpoint_date" Type="Edm.Date"/>
+                <Property Name="termination_date" Type="Edm.Date"/>
+                <Property Name="termination_reason" Type="Edm.String"/>
+                <Property Name="highpoint_metres" Type="Edm.Int32"/>
+                <Property Name="members" Type="Edm.String"/>
+                <Property Name="member_deaths" Type="Edm.String"/>
+                <Property Name="hired_staff" Type="Edm.String"/>
+                <Property Name="hired_staff_deaths" Type="Edm.String"/>
+                <Property Name="oxygen_used" Type="Edm.String"/>
+                <Property Name="trekking_agency" Type="Edm.String"/>
+            </EntityType>
+            <Annotations Target="AdminService.Peaks">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="peak_name"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record Type="HTML5.CssDefaultsType">
+                                    <PropertyValue Property="width" String="10rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="peak_alternative_name"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record Type="HTML5.CssDefaultsType">
+                                    <PropertyValue Property="width" String="10rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="height_metres"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record Type="HTML5.CssDefaultsType">
+                                    <PropertyValue Property="width" String="5rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="climbing_status"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record Type="HTML5.CssDefaultsType">
+                                    <PropertyValue Property="width" String="7rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="first_ascent_year"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record Type="HTML5.CssDefaultsType">
+                                    <PropertyValue Property="width" String="4rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="first_ascent_country"/>
+                            <Annotation Term="HTML5.CssDefaults">
+                                <Record Type="HTML5.CssDefaultsType">
+                                    <PropertyValue Property="width" String="6rem"/>
+                                </Record>
+                            </Annotation>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>peak_name</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="Peak"/>
+                        <PropertyValue Property="TypeNamePlural" String="Peaks"/>
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="peak_name"/>
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="peak_alternative_name"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Main Details"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Main"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Main">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="height_metres"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="climbing_status"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="first_ascent_year"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="first_ascent_country"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/ID">
+                <Annotation Term="Core.Computed" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/peak_id">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/peak_name">
+                <Annotation Term="Common.Label" String="Peak Name"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/peak_alternative_name">
+                <Annotation Term="Common.Label" String="Peak Alternative Name"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/height_metres">
+                <Annotation Term="Common.Label" String="Height(m)"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/climbing_status">
+                <Annotation Term="Common.Label" String="Climbing Status"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/first_ascent_year">
+                <Annotation Term="Common.Label" String="First Ascent Year"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/first_ascent_country">
+                <Annotation Term="Common.Label" String="First Ascent Country"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/first_ascent">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+            <Annotations Target="AdminService.Peaks/first_ascent_ID">
+                <Annotation Term="UI.Hidden" Bool="true"/>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

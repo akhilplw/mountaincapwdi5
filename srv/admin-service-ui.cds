@@ -1,57 +1,52 @@
 using AdminService from './admin-service';
 
 
-annotate AdminService.Peaks with {
+annotate AdminService.Expeditions with {
+    ID @title: 'Expedition ID';
     peak_id               @(UI.Hidden);
     peak_name             @title: 'Peak Name';
-    peak_alternative_name @title: 'Peak Alternative Name';
-    height_metres         @title: 'Height(m)';
-    climbing_status       @title: 'Climbing Status';
-    first_ascent_year     @title: 'First Ascent Year';
-    first_ascent_country  @title: 'First Ascent Country';
-    first_ascent          @(UI.Hidden);
+    season @title:'Season';
+    year     @title: 'Year';
+    // peak_alternative_name @title: 'Peak Alternative Name';
+    // height_metres         @title: 'Height(m)';
+    // climbing_status       @title: 'Climbing Status';
+    // first_ascent_country  @title: 'First Ascent Country';
+    // first_ascent          @(UI.Hidden);
 };
 
-annotate AdminService.Peaks with @(UI: {
+annotate AdminService.Expeditions with @(UI: {
     LineItem        : [
+        {
+            Value                 : ID,
+            ![@HTML5.CssDefaults] : {width: '5rem'}
+        },
         {
             Value                 : peak_name,
             ![@HTML5.CssDefaults] : {width: '10rem'}
         },
         {
-            Value                 : peak_alternative_name,
+            Value                 : season,
             ![@HTML5.CssDefaults] : {width: '10rem'}
         },
         {
-            Value                 : height_metres,
+            Value                 : year,
             ![@HTML5.CssDefaults] : {width: '5rem'}
-        },
-        {
-            Value                 : climbing_status,
-            ![@HTML5.CssDefaults] : {width: '7rem'}
-        },
-        {
-            Value                 : first_ascent_year,
-            ![@HTML5.CssDefaults] : {width: '4rem'}
-        },
-        {
-            Value                 : first_ascent_country,
-            ![@HTML5.CssDefaults] : {width: '6rem'}
         }
     ],
     SelectionFields : [peak_name],
     HeaderInfo      : {
-        TypeName      : 'Peak',
-        TypeNamePlural: 'Peaks',
+        TypeName      : 'Expedition ID',
+        TypeNamePlural: '',
         Title         : {
             $Type: 'UI.DataField',
-            Value: peak_name
+            Value: ID
         },
         Description   : {
             $Type: 'UI.DataField',
-            Value: peak_alternative_name
+            Value: peak_name
         }
     },
+//  id,peak_id,peak_name,year,season,basecamp_date,highpoint_date,termination_date,termination_reason,highpoint_metres,members,member_deaths,hired_staff,hired_staff_deaths,oxygen_used,trekking_agency
     Facets          : [{
         $Type : 'UI.ReferenceFacet',
         Label : 'Main Details',
@@ -60,16 +55,16 @@ annotate AdminService.Peaks with @(UI: {
     // basecamp_date,highpoint_date,termination_date,termination_reason, ,oxygen_used,trekking_agency
     FieldGroup #Main: {Data: [
         {
-            Value                 : height_metres,
+            Value                 : year,
         },
         {
-            Value                 : climbing_status,
+            Value                 : season,
         },
         {
-            Value                 : first_ascent_year,
+            Value                 : basecamp_date,
         },
         {
-            Value                 : first_ascent_country,
+            Value                 : highpoint_date,
         }
     ]}
 });
