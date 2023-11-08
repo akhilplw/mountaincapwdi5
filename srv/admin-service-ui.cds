@@ -81,6 +81,9 @@ annotate AdminService.Expeditions with @(UI: {
     }],
     // basecamp_date,highpoint_date,termination_date,termination_reason, ,oxygen_used,trekking_agency
     FieldGroup #Main: {Data: [
+         {
+            Value                 : peak_name,
+        },
         {
             Value                 : year,
         },
