@@ -8,6 +8,7 @@ annotate AdminService.Expeditions with {
     season @title:'Season';
     year     @title: 'Year';
     highpoint_date @title : 'Highpoint Date';
+    basecamp_date @title : 'Basecamp Date';
     highpoint_metres @title: 'Highpoint(m)';
     members @title : 'No. of Members';
     trekking_agency @title: 'Name of Trekking Agency'

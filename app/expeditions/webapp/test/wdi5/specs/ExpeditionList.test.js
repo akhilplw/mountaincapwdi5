@@ -2,7 +2,7 @@ const { wdi5 } = require("wdio-ui5-service");
 const MainPage = require("../PageObjects/mainPage.page");
 const ObjectPage = require("../PageObjects/ObjectPage.page");
 
-describe("samples", () => {
+describe("Testing: ", () => {
   let sPeak = "Manaslu",
     sExpID = "MANA15312",
     sNewExpID = "Test",
@@ -21,7 +21,7 @@ describe("samples", () => {
     await MainPage.iNavigateObjectPage();
     await ObjectPage.iGetDetailPageTitle(sExpID);
     await ObjectPage.iCheckPeakNameDetailPage(sExpID, sPeak);
-    browser.back();
+    await browser.back();
   });
 
   // it.skip("Delete the test expedition", async () => {
@@ -54,11 +54,12 @@ describe("samples", () => {
     await ObjectPage.iClickEditButton();
     await ObjectPage.iAddSeasonValue(sNewSeason);
     await ObjectPage.iDraftSave();
-    await browser.back();
-    await browser.waitUntil(async () => {
-      const sUrl = await browser.getUrl();
-      return (sUrl === "http://localhost:4004/expeditions/webapp/index.html");
-    });
+    await browser.navigateTo("http://localhost:4004/expeditions/webapp/index.html");
+    // await browser.waitUntil(async () => {
+    //   const sUrl = await browser.getUrl();
+    //   return (sUrl === "http://localhost:4004/expeditions/webapp/index.html");
+    // });
+    await MainPage.iClickGoButton();
     await MainPage.iEnterSearchFilter(sNewExpID);
     await MainPage.iClickGoButton();
     await MainPage.iCheckNewSeasonAdded(sNewSeason);
