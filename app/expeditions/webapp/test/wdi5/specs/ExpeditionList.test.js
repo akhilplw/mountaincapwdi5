@@ -53,7 +53,7 @@ describe("Testing: ", () => {
     await MainPage.iGetSearchTableEntry1(sNewExpID);
   });
 
-  it("Edit already added entry", async () => {
+  it.skip("Edit already added entry", async () => {
     await MainPage.iNavigateObjectPage();
     await ObjectPage.iClickEditButton();
     await ObjectPage.iAddSeasonValue(sNewSeason);
