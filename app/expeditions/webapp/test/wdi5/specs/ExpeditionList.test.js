@@ -42,6 +42,10 @@ describe("Testing: ", () => {
     await ObjectPage.iEnterStartingYear();
     await ObjectPage.iClickDetailCreate();
     await browser.back();
+    await browser.executeAsync((done) => {
+      console.log('this should not fail')
+      setTimeout(done, 3000)
+  })
     // await MainPage.iClearPeaKValue();
     await MainPage.iEnterPeakFilter(sNewPeakName);
     await MainPage.iEnterSearchFilter(sNewExpID);
@@ -54,7 +58,9 @@ describe("Testing: ", () => {
     await ObjectPage.iClickEditButton();
     await ObjectPage.iAddSeasonValue(sNewSeason);
     await ObjectPage.iDraftSave();
-    await browser.navigateTo("http://localhost:4004/expeditions/webapp/index.html");
+    await browser.setTimeout({ 'script': 3000 })
+    await browser.back();
+    // await browser.navigateTo("http://localhost:4004/expeditions/webapp/index.html");
     // await browser.waitUntil(async () => {
     //   const sUrl = await browser.getUrl();
     //   return (sUrl === "http://localhost:4004/expeditions/webapp/index.html");
