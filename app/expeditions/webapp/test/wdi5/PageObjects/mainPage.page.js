@@ -87,12 +87,31 @@ module.exports = {
   },
 
   iClearPeaKValue: async () => {
-    await browser
-      .asControl({
+    const oTokenizer = await browser.asControl({
         selector: {
-          id: "mountaineering.expeditions::ExpeditionsList--fe::FilterBar::Expeditions::FilterField::peak_name",
-        },
-      })
-      .enterText("");
+            controlType: "sap.m.Tokenizer",
+            viewName: "sap.fe.templates.ListReport.ListReport",
+            viewId: "mountaineering.expeditions::ExpeditionsList",
+            bindingPath: {
+                    path: "",
+                    propertyPath: "/conditions",
+                    modelName: "$field"
+            }
+    }});
+    await oTokenizer.removeToken(0); 
   },
+
+  iCheckNewSeasonAdded: async (sNewSeason) => {
+    const sText = await browser.asControl({
+    	selector: {
+            controlType: "sap.m.Text",
+            viewName: "sap.fe.templates.ListReport.ListReport",
+            viewId: "mountaineering.expeditions::ExpeditionsList",
+            bindingPath: {
+                    path: "/Expeditions(ID='Test',IsActiveEntity=true)",
+                    propertyPath: "season"
+            }
+    }}).getText();
+    expect(sText).toEqual(sNewSeason);
+}
 };

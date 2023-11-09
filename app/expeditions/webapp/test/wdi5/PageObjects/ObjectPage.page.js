@@ -17,7 +17,7 @@ module.exports = {
     expect(sTitle).toEqual(sExpID);
   },
 
-  iCheckPeakNameDetailPage: async (aPeakName) => {
+  iCheckPeakNameDetailPage: async (sExpID, aPeakName) => {
     const sPeakName = await browser
       .asControl({
         selector: {
@@ -25,7 +25,7 @@ module.exports = {
           viewName: "sap.fe.templates.ObjectPage.ObjectPage",
           viewId: "mountaineering.expeditions::ExpeditionsObjectPage",
           bindingPath: {
-            path: `/Expeditions(ID=${aPeakName},IsActiveEntity=true)`,
+            path: `/Expeditions(ID='${sExpID}',IsActiveEntity=true)`,
             propertyPath: "peak_name",
           },
         },
@@ -135,5 +135,12 @@ module.exports = {
         selector: {
             id: "mountaineering.expeditions::ExpeditionsObjectPage--fe::FormContainer::FieldGroup::Main::FormElement::DataField::season::Field-edit"
     }}).enterText(sText);
-  }
+  },
+
+  iDraftSave: async () => {
+    await browser.asControl({
+    	selector: {
+            id: "mountaineering.expeditions::ExpeditionsObjectPage--fe::FooterBar::StandardAction::Save"
+    }}).press();
+}
 };

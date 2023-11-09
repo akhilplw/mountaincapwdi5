@@ -11,7 +11,7 @@ describe("samples", () => {
 
   it("Test for data in the table", async () => {
     await MainPage.iClickGoButton();
-    await MainPage.iEnterPeakFilter(sPeak);
+    // await MainPage.iEnterPeakFilter(sPeak);
     await MainPage.iEnterSearchFilter(sExpID);
     await MainPage.iClickGoButton();
     await MainPage.iGetSearchTableEntry(sExpID);
@@ -20,17 +20,17 @@ describe("samples", () => {
   it("Test for Detail Page Values", async () => {
     await MainPage.iNavigateObjectPage();
     await ObjectPage.iGetDetailPageTitle(sExpID);
-    await ObjectPage.iCheckPeakNameDetailPage(sPeak);
+    await ObjectPage.iCheckPeakNameDetailPage(sExpID, sPeak);
     browser.back();
   });
 
-  it.skip("Delete the test expedition", async () => {
-    await MainPage.iEnterSearchFilter(sNewExpID);
-    await MainPage.iClearPeaKValue();
-    await MainPage.iClickGoButton();
-    await MainPage.iNavigateObjectPage();
-    await MainPage.iDeleteNewExpedition();
-  });
+  // it.skip("Delete the test expedition", async () => {
+  //   await MainPage.iEnterSearchFilter(sNewExpID);
+  //   await MainPage.iClearPeaKValue();
+  //   await MainPage.iClickGoButton();
+  //   await MainPage.iNavigateObjectPage();
+  //   await MainPage.iDeleteNewExpedition();
+  // });
 
   it("Create a new entry", async () => {
     await MainPage.iClickCreate();
@@ -42,8 +42,9 @@ describe("samples", () => {
     await ObjectPage.iEnterStartingYear();
     await ObjectPage.iClickDetailCreate();
     await browser.back();
+    // await MainPage.iClearPeaKValue();
+    await MainPage.iEnterPeakFilter(sNewPeakName);
     await MainPage.iEnterSearchFilter(sNewExpID);
-    await MainPage.iClearPeaKValue();
     await MainPage.iClickGoButton();
     await MainPage.iGetSearchTableEntry1(sNewExpID);
   });
@@ -52,10 +53,14 @@ describe("samples", () => {
     await MainPage.iNavigateObjectPage();
     await ObjectPage.iClickEditButton();
     await ObjectPage.iAddSeasonValue(sNewSeason);
-    await ObjectPage.iClickDetailCreate();
+    await ObjectPage.iDraftSave();
     await browser.back();
+    await browser.waitUntil(async () => {
+      const sUrl = await browser.getUrl();
+      return (sUrl === "http://localhost:4004/expeditions/webapp/index.html");
+    });
     await MainPage.iEnterSearchFilter(sNewExpID);
-    await MainPage.iClearPeaKValue();
     await MainPage.iClickGoButton();
+    await MainPage.iCheckNewSeasonAdded(sNewSeason);
   });
 });
